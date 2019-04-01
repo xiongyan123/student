@@ -1,67 +1,77 @@
 ---
 server:
-  port: 8000
+  port: 8000  #单点登录端口
   servlet:
-    context-path: /
-    
+    context-path: /     #默认都是根目录配置   就是/
 spring:
-  profiles: prod      #生产环境
+  profiles: prod
   datasource:
+    #引入druid数据源
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/jtdb?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
     username: root
     password: root
     
-  application:
+  application:   #定义服务名称相同服务,名称相同
     name: provider-user
-       
+    
 eureka:
-  client:
+   client:
     service-url:
       defaultZone: http://localhost:7000/eureka
-  instance:
-    instance-id: provider-user-8000       #定义微服务的名称
-    prefer-ip-address: true               #是否显示IP和端口
+   instance:
+    instance-id: provider-user-8000                #定义微服务的名称,服务具体的名称
+    prefer-ip-address: true                        #是否显示IP和端口
     
+#mybatis-plush配置
 mybatis-plus:
   type-aliases-package: com.jt.pojo
   mapper-locations: classpath:/mybatis/mappers/*.xml
   configuration:
-    map-underscore-to-camel-case: true #自动开启驼峰命名 
+    map-underscore-to-camel-case: true  #自动开启驼峰规则映射
     
 ---
 server:
-  port: 8005
+  port: 8005  #单点登录端口
   servlet:
-    context-path: /
-    
+    context-path: /     #默认都是根目录配置   就是/
 spring:
-  profiles: test       #测试环境
+  profiles: test
   datasource:
+    #引入druid数据源
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/jtdb?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
     username: root
     password: root
-       
-  application:
+    
+  application:   #定义服务名称相同服务,名称相同
     name: provider-user
     
 eureka:
-  client:
+   client:
     service-url:
       defaultZone: http://localhost:7000/eureka
-  instance:
-    instance-id: provider-user-8005       #定义微服务的名称
-    prefer-ip-address: true               #是否显示IP和端口
+   instance:
+    instance-id: provider-user-8005               #定义微服务的名称,服务具体的名称
+    prefer-ip-address: true                        #是否显示IP和端口
     
+#mybatis-plush配置
 mybatis-plus:
   type-aliases-package: com.jt.pojo
   mapper-locations: classpath:/mybatis/mappers/*.xml
   configuration:
-    map-underscore-to-camel-case: true #自动开启驼峰命名 
-    
-    
-    
-    
+    map-underscore-to-camel-case: true  #自动开启驼峰规则映射
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
